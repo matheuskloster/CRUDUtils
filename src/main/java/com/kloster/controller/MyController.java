@@ -1,5 +1,6 @@
 package com.kloster.controller;
 
+import com.kloster.model.MyModel;
 import com.kloster.service.MyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,10 @@ public class MyController {
     private final MyService service;
 
     @GetMapping()
-    public String meuEndpoint() {
-        return service.getNome();
+    public MyModel myEndpoint() {
+        MyModel myModel = new MyModel();
+        myModel.setAge(service.getIdade());
+        myModel.setName(service.getNome());
+        return myModel;
     }
 }

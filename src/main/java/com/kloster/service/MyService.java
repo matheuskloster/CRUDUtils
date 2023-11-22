@@ -1,15 +1,19 @@
 package com.kloster.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 @RequiredArgsConstructor
 public class MyService {
 
-    private final PropertyLoader propertyLoader;
+    private final PropertyLoaderService propertyLoader;
 
     public String getNome() {
-      return propertyLoader.getNome();
+        return propertyLoader.getNome();
+    }
+
+    public int getIdade() {
+        return propertyLoader.getIdade();
     }
 }
