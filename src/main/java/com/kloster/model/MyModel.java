@@ -11,7 +11,8 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class MyModel {
 
-    private String name;
-    private int age;
+    private String id;
+    private String nome;
+    private int idade;
 
 }
