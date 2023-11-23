@@ -2,3 +2,11 @@ minha:
   variavel:
     nome: Matheus
     idade: 26
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/my-db
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
