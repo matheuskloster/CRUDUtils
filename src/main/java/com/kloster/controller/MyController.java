@@ -1,32 +1,27 @@
 package com.kloster.controller;
 
+import com.kloster.dto.MyDto;
 import com.kloster.model.MyModel;
-import com.kloster.service.MyService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/api")
-@RequiredArgsConstructor
-public class MyController {
+import java.util.List;
 
-    private final MyService service;
+public interface MyController {
+    @PostMapping
+    MyModel create(@RequestBody MyDto myDto);
 
-    @GetMapping()
-    public MyModel myEndpoint() {
-        MyModel myModel = new MyModel();
-        myModel.setIdade(service.getIdade());
-        myModel.setNome(service.getNome());
-        return myModel;
-    }
+    @GetMapping
+    List<MyModel> getAll();
 
-    @PostMapping("/save")
-    public MyModel mySaveEndpoint(@RequestBody MyModel myModel) {
-        return service.saveModel(myModel);
-    }
+    @GetMapping("/nome")
+    MyModel getByNome(@RequestParam String nome);
 
-    @GetMapping("/get")
-    public MyModel myGetByNomeEndpoint(@RequestParam String nome) {
-        return service.findByNome(nome);
-    }
+    @DeleteMapping("/nome")
+    MyModel deleteByNome(@RequestParam String nome);
+
+    @DeleteMapping
+    void delete(@RequestBody MyModel myModel);
+
+    @PutMapping
+    MyModel update(@RequestBody MyModel myModel);
 }

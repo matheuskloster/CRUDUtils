@@ -7,6 +7,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 
 @Component
 @Mapper(componentModel = "spring", imports = {MyModel.class, MyEntity.class})
@@ -24,6 +26,6 @@ public interface MyMapper {
     @Mapping(source= "idade", target = "idade")
     MyModel toMyModel(MyEntity myEntity);
 
-
+    List<MyModel> toMyModelList(List<MyEntity> myEntityList);
 
 }
