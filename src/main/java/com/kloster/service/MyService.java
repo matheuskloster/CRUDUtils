@@ -2,8 +2,10 @@ package com.kloster.service;
 
 import com.kloster.mapper.MyMapper;
 import com.kloster.model.MyModel;
-import com.kloster.repository.MyRepository;
+import com.kloster.repository.postgres.MyRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,10 +36,19 @@ public class MyService {
     }
 
     public MyModel findById(Long id) {
-        return mapper.toMyModel(repository.findById(String.valueOf(id)).orElse(null));
+        return mapper.toMyModel(repository.findById(id).orElse(null));
     }
 
     public List<MyModel> findAll() {
         return repository.findAll().stream().map(mapper::toMyModel).collect(Collectors.toList());
     }
+
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
+
+    public List<MyModel> findAll(Pageable pageable) {
+        return repository.findAll(pageable).stream().map(mapper::toMyModel).collect(Collectors.toList());
+    }
+
 }
