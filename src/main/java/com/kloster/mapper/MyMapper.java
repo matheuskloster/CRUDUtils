@@ -1,6 +1,7 @@
 package com.kloster.mapper;
 
-import com.kloster.entity.MyEntity;
+import com.kloster.dto.MyDto;
+import com.kloster.entity.postgres.MyEntity;
 import com.kloster.model.MyModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -15,4 +16,6 @@ public interface MyMapper {
     MyEntity toMyEntity(MyModel myModel);
 
     MyModel toMyModel(MyEntity myEntity);
+
+    MyModel dtoToModel(MyDto myDto);
 }
