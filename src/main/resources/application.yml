@@ -1,7 +1,7 @@
 minha:
   variavel:
     nome: Matheus
-    idade: 26
+    idade: 27
 
 spring:
   data:
