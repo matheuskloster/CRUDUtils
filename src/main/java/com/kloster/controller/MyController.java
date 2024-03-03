@@ -6,15 +6,17 @@ import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/myModel")
 @RequiredArgsConstructor
 @Api(value = "MyController", description = "Operações disponíveis em MyController")
 public class MyController {
 
     private final MyService service;
 
-    @GetMapping()
+    @GetMapping("/static")
     @ApiOperation(value = "Retorna um MyModel", response = MyModel.class)
     public MyModel myEndpoint() {
         MyModel myModel = new MyModel();
@@ -23,13 +25,20 @@ public class MyController {
         return myModel;
     }
 
-    @PostMapping("/save")
+    @PostMapping
     @ApiOperation(value = "Salva um MyModel e retorna o objeto salvo", response = MyModel.class)
     public MyModel mySaveEndpoint(@ApiParam(value = "Objeto MyModel que precisa ser salvo", required = true) @RequestBody MyModel myModel) {
         return service.saveModel(myModel);
     }
 
-    @GetMapping("/get/{id}")
+
+    @GetMapping
+    @ApiOperation(value = "Retorna todos os MyModel", response = MyModel.class, responseContainer = "List")
+    public List<MyModel> myGetAllEndpoint() {
+        return service.findAll();
+    }
+
+    @GetMapping("/{id}")
     @ApiOperation(value = "Retorna um MyModel com base no ID fornecido", response = MyModel.class)
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Objeto MyModel encontrado"),
@@ -39,7 +48,7 @@ public class MyController {
         return service.findById(id);
     }
 
-    @GetMapping("/get/name")
+    @GetMapping("/name")
     @ApiOperation(value = "Retorna um MyModel com base no nome fornecido", response = MyModel.class)
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Objeto MyModel encontrado"),

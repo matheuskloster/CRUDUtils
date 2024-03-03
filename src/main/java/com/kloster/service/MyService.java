@@ -6,6 +6,9 @@ import com.kloster.repository.MyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class MyService {
@@ -32,5 +35,9 @@ public class MyService {
 
     public MyModel findById(Long id) {
         return mapper.toMyModel(repository.findById(String.valueOf(id)).orElse(null));
+    }
+
+    public List<MyModel> findAll() {
+        return repository.findAll().stream().map(mapper::toMyModel).collect(Collectors.toList());
     }
 }
