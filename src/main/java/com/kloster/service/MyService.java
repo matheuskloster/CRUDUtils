@@ -64,9 +64,12 @@ public class MyService {
         OtherEntity otherEntity = otherRepository.findById(otherId)
                 .orElseThrow(() -> new RuntimeException("OtherEntity not found with id " + otherId));
 
+
+        //TODO: REFACTOR não parece boa prática
+        otherEntity.setMyEntity(myEntity);
         myEntity.getOtherEntities().add(otherEntity);
 
-        repository.save(myEntity);
+        repository.saveAndFlush(myEntity);
 
         return mapper.entityToModel(myEntity);
     }
