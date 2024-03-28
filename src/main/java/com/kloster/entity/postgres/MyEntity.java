@@ -3,6 +3,7 @@ package com.kloster.entity.postgres;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,4 +16,6 @@ public class MyEntity {
     private String nome;
     private int idade;
 
+    @OneToMany(mappedBy = "myEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OtherEntity> otherEntities;
 }

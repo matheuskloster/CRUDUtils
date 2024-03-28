@@ -80,6 +80,13 @@ public class MyController {
         return service.findAll(PageRequest.of(page, size));
     }
 
+    @PostMapping("/{myId}/addOther/{otherId}")
+    @ApiOperation(value = "Adiciona um OtherEntity à lista de OtherEntity em MyEntity", response = MyModel.class)
+    public MyModel addOtherToMy(@ApiParam(value = "ID do MyEntity", required = true) @PathVariable Long myId,
+                                @ApiParam(value = "ID do OtherDto", required = true) @PathVariable Long otherId) {
+        return service.addOtherToMy(myId, otherId);
+    }
+
 
 
 }
