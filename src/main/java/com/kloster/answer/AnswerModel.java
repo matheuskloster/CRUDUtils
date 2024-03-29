@@ -1,4 +1,4 @@
-package com.kloster.model;
+package com.kloster.answer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class OtherModel {
+public class AnswerModel {
 
     private Long id;
-    private String nome;
-    private String email;
+    private String texto;
+    private String username;
 
 }

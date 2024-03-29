@@ -1,5 +1,6 @@
-package com.kloster.model;
+package com.kloster.question;
 
+import com.kloster.answer.AnswerModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,12 +12,12 @@ import java.util.List;
 @Component
 @NoArgsConstructor
 @AllArgsConstructor
-public class MyModel {
+public class QuestionModel {
 
     private Long id;
-    private String nome;
-    private int idade;
-    private List<OtherModel> otherModels;
+    private String texto;
+    private String username;
+    private List<AnswerModel> answers;
 
 
 }

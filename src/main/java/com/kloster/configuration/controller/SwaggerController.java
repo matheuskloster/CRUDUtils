@@ -1,4 +1,4 @@
-package com.kloster.controller;
+package com.kloster.configuration.controller;
 
 
 import org.springframework.stereotype.Controller;

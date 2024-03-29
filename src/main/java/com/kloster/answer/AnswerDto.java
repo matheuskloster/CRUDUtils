@@ -1,4 +1,4 @@
-package com.kloster.dto;
+package com.kloster.answer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -8,11 +8,10 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class OtherDto {
+public class AnswerDto {
 
     @JsonIgnore
     private Long id;
-    private String nome;
-    private String email;
-
+    private String texto;
+    private String username;
 }
